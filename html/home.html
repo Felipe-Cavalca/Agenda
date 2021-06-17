@@ -26,56 +26,7 @@
     <section class="mt-1">
         <p class="fs-1">Contatos</p>
         <hr>
-        <ol class="list-group m-5 ">
-            <li onclick="editar()" class="list-group-item d-flex justify-content-between align-items-start contato">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Nome</div>
-                    <p>Telefone</p>
-                    <p>Email</p>
-                    <p>Endereço</p>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start contato">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Nome</div>
-                    <p>Telefone</p>
-                    <p>Email</p>
-                    <p>Endereço</p>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start contato">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Nome</div>
-                    <p>Telefone</p>
-                    <p>Email</p>
-                    <p>Endereço</p>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start contato">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Nome</div>
-                    <p>Telefone</p>
-                    <p>Email</p>
-                    <p>Endereço</p>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start contato">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Nome</div>
-                    <p>Telefone</p>
-                    <p>Email</p>
-                    <p>Endereço</p>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start contato">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Nome</div>
-                    <p>Telefone</p>
-                    <p>Email</p>
-                    <p>Endereço</p>
-                </div>
-            </li>
-
+        <ol id="contatos" class="list-group m-5">
         </ol>
     </section>
 
@@ -83,7 +34,12 @@
     <!--botoes-->
     <div onclick="cadastro()" class="botao-flutuante"><p>+</p></div>
 
+    <script src="../js/contato.js"></script>
+    <script src="../js/controlador.js"></script>
     <script>
+
+    homeContatos("contatos");
+
         function editar(){
             alert("editou");
         }
