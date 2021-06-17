@@ -1,0 +1,27 @@
+body{
+    color: white;
+    background-color: darkgray;
+}
+
+hr{
+    border: 3px solid black;
+}
+
+.contato{
+    color: black;
+    background-color:powderblue;
+    border: 2px solid black;
+}
+
+.botao-flutuante{
+    position: fixed;
+    bottom:10px;
+    right:10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 30px;
+    font-size: 30px;
+    color:white;
+    background-color: blue;
+    text-align: center;
+}
