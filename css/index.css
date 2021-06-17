@@ -9,7 +9,7 @@ hr{
 
 .contato{
     color: black;
-    background-color:rgb(205, 213, 214);
+    background-color:powderblue;
     border: 2px solid black;
 }
 
@@ -20,7 +20,7 @@ hr{
 .mensagemExcluir{
     color:black;
     position: fixed;
-    top: 3%;
+    top: 39%;
     left: 10%;
     width: 80%;
     border: 5px solid black;
