@@ -61,7 +61,7 @@ function exibir(dados){
 
         escrever += '<li class="list-group-item d-flex contato" data-bs-toggle="collapse" href="#' +val[i].id+ '">' +
                         '<div class="ms-2 me-auto">' +
-                            '<div class="fw-bold">Nome: '+val[i].nome+ '</div>' +
+                            '<div class="fw-bold">'+val[i].nome+ '</div>' +
                             '<div class="collapse" id="' +val[i].id+ '">' +
                                 '<p  class="mt-3">Telefone: ' +val[i].telefone+ '</p>' +
                                 '<p>Email: ' +val[i].email+ '</p>' +
