@@ -53,7 +53,7 @@ function excluirContato(id, elemento){
         var dados = {"id":id, "listar": true}
     else
         var dados = {"id":id, "listar":false}
-        
+
     dados = JSON.stringify(dados);
 
     $.ajax({
@@ -97,7 +97,9 @@ function exibir(dados){
                                 '</div>' +
                                 '<div class="col-md-4 mt-2">' +
                                     '<p><button onclick="editar(' +val[i].id+ ')"  type="button" class="btn btn-primary full">Editar</button></p>' +
-                                    '<p><button onclick="avisoExcluir(' +val[i].id+ ')" class="btn btn-danger full">Excluir</button></p>' +
+                                    '<p><button onclick="avisoExcluir(' +val[i].id+ ', ';
+                                    escrever += "'"+val[i].nome+"'";
+                                    escrever += ')" class="btn btn-danger full">Excluir</button></p>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +

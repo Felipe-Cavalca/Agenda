@@ -40,7 +40,7 @@
         <div class="card m-5">
             <div class="card-body mensagemExcluir">
                 <h5 style="color: black" class="card-title">Exclusão de contato!</h5>
-                <p  style="color: black" class="card-text">Essa ação irá excluir permanentemente de sua agenda, tem certeza que deseja continuar?</p>
+                <p  style="color: black" class="card-text">Essa ação irá excluir permanentemente <a id="nome"></a> de sua agenda, tem certeza que deseja continuar?</p>
                 <p><button onclick="cancelar()" type="button" class="btn btn-primary full">Cancelar</button></p>
                 <p><button onclick="excluir()" type="button" class="btn btn-danger  full">Excluir</button></p>
             </div>
@@ -65,7 +65,8 @@
             alert("ainda não fiz");
         }
 
-        function avisoExcluir(id) {
+        function avisoExcluir(id,nome) {
+            document.getElementById("nome").innerHTML = nome;
             sessionStorage.setItem('id', id);
             $("#mensagemExcluir").show();
         }
