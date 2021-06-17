@@ -59,7 +59,7 @@ function exibir(dados){
         val[i].email;
         val[i].endereco;
 
-        escrever += '<li class="list-group-item d-flex contato" data-bs-toggle="collapse" href="#' +val[i].id+ '">' +
+        escrever += '<li class="list-group-item contato" data-bs-toggle="collapse" href="#' +val[i].id+ '">' +
                         '<div class="ms-2 me-auto">' +
                             '<div class="fw-bold">'+val[i].nome+ '</div>' +
                             '<div class="collapse" id="' +val[i].id+ '">' +
