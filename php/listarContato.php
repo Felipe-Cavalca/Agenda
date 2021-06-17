@@ -2,7 +2,7 @@
 
 include 'conexao.php';
 
-$sth = $pdo->prepare("SELECT * FROM tbl_contatos");
+$sth = $pdo->prepare("SELECT * FROM tbl_contatos order by contato_nome asc");
 $sth->execute();
 $json_str = '[';
 foreach ($sth as $res) {
