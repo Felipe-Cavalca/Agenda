@@ -48,24 +48,57 @@ function pegarContatos(elemento){
     });
 }
 
+function excluirContato(id, elemento){
+    if (elemento != undefined)
+        var dados = {"id":id, "listar": true}
+    else
+        var dados = {"id":id, "listar":false}
+        
+    dados = JSON.stringify(dados);
+
+    $.ajax({
+        url: 'http://192.168.0.19/Agenda/php/excluirContato.php',
+        data: {data:dados},
+        type: 'POST',
+        beforeSent: function () {
+            
+        },
+        success: function (resposta) {
+            if (elemento != undefined){
+                document.getElementById(elemento).innerHTML = exibir(resposta);
+            }
+        },
+        complete: function () {
+            
+        }
+    });
+}
+
 function exibir(dados){
     val = JSON.parse(dados);
     var escrever = "";
 
     for(var i=0; i<val.length; i++){
-        val[i].id = 'id'+val[i].id;
+        val[i].id;
         val[i].nome;
         val[i].telefone;
         val[i].email;
         val[i].endereco;
 
-        escrever += '<li class="list-group-item contato" data-bs-toggle="collapse" href="#' +val[i].id+ '">' +
+        escrever += '<li class="list-group-item contato" data-bs-toggle="collapse" href="#id' +val[i].id+ '">' +
                         '<div class="ms-2 me-auto">' +
-                            '<div class="fw-bold">'+val[i].nome+ '</div>' +
-                            '<div class="collapse" id="' +val[i].id+ '">' +
-                                '<p  class="mt-3">Telefone: ' +val[i].telefone+ '</p>' +
-                                '<p>Email: ' +val[i].email+ '</p>' +
-                                '<p>Endereço: ' +val[i].endereco+ '</p>' +
+                            '<div class="fw-bold">' +val[i].nome+ '</div>' +
+                            '<div class="collapse row" id="id' +val[i].id+ '">' +
+                                '<hr>' +
+                                '<div class="col-md-8">' +
+                                    '<p>Telefone: ' +val[i].telefone+ '</p>' +
+                                    '<p>Email: ' +val[i].email+ '</p>' +
+                                    '<p>Endereço: ' +val[i].endereco+ '</p>' +
+                                '</div>' +
+                                '<div class="col-md-4 mt-2">' +
+                                    '<p><button onclick="editar(' +val[i].id+ ')"  type="button" class="btn btn-primary full">Editar</button></p>' +
+                                    '<p><button onclick="avisoExcluir(' +val[i].id+ ')" class="btn btn-danger full">Excluir</button></p>' +
+                                '</div>' +
                             '</div>' +
                         '</div>' +
                     '</li>';

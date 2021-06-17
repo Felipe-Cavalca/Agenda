@@ -13,7 +13,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<body onload="iniciaPagina()">
 
     <!--navbar-->
     <nav class="navbar navbar-dark bg-dark">
@@ -22,12 +22,29 @@
         </div>
     </nav>
 
+    <!--nome pagina-->
     <section class="mt-1">
         <p class="fs-1">Contatos</p>
         <hr>
+    </section>
+
+    <!--contatos-->
+    <section id="contatos" class="mt-1">
         <ol class="list-group m-5" id="exibirContatos">
-            
+
         </ol>
+    </section>
+
+    <!--Mensagem excluir-->
+    <section id="mensagemExcluir">
+        <div class="card m-5">
+            <div class="card-body mensagemExcluir">
+                <h5 style="color: black" class="card-title">Exclusão de contato!</h5>
+                <p  style="color: black" class="card-text">Essa ação irá excluir permanentemente de sua agenda, tem certeza que deseja continuar?</p>
+                <p><button onclick="cancelar()" type="button" class="btn btn-primary full">Cancelar</button></p>
+                <p><button onclick="excluir()" type="button" class="btn btn-danger  full">Excluir</button></p>
+            </div>
+        </div>
     </section>
 
     <!--botoes-->
@@ -38,10 +55,28 @@
     <!--<script src="../js/contato.js"></script>-->
     <script src="../js/controlador.js"></script>
     <script>
-         pegarContatos("exibirContatos");
+
+        function iniciaPagina() {
+            $("#mensagemExcluir").hide();
+            pegarContatos("exibirContatos");
+        }
 
         function editar() {
-            alert("editou");
+            alert("ainda não fiz");
+        }
+
+        function avisoExcluir(id) {
+            sessionStorage.setItem('id', id);
+            $("#mensagemExcluir").show();
+        }
+
+        function cancelar(){
+            $("#mensagemExcluir").hide();
+        }
+
+        function excluir(){
+            excluirContato(sessionStorage.getItem('id'), 'exibirContatos');
+            $("#mensagemExcluir").hide();
         }
 
     </script>

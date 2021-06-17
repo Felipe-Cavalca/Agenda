@@ -17,6 +17,16 @@ hr{
     width: 100%;
 }
 
+.mensagemExcluir{
+    color:black;
+    position: fixed;
+    top: 30%;
+    left: 10%;
+    width: 80%;
+    border: 5px solid black;
+    background-color: whitesmoke;
+}
+
 .botao-flutuante-cadastro{
     position: fixed;
     bottom:10px;

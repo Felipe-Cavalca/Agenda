@@ -6,9 +6,8 @@ $telfone = $dados['telefone'];
 $email = $dados['email'];
 $endereco = $dados['endereco'];
 
-include 'conexao.php';
-
 if ($nome != null){
+    include 'conexao.php';
     $Dados = array(
         'contato_nome'     => $nome,
         'contato_telefone' => $telfone,
