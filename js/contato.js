@@ -62,15 +62,13 @@ function Contato(id, nome, telefone, email, endereco) {
 
 function homeContatos(elemento){
     var escrever = "";
-    for(var i =0; i<contatos.length; i++){
-        escrever += '<li onclick="editar()" class="list-group-item d-flex justify-content-between align-items-start contato">'+
-                        '<div class="ms-2 me-auto">'+
-                            '<div class="fw-bold mb-3">Nome: ' + contatos[i].GetNome() + '</div>'+
-                            '<p>Telefone: ' + contatos[i].GetTelefone() + '</p>'+
-                            '<p>Email: ' + contatos[i].GetEmail() + '</p>'+
-                            '<p>Endereço: ' + contatos[i].GetEndereco() + '</p>'+
-                        '</div>'+
-                    '</li>';
-    }
+    escrever += '<li onclick="editar()" class="list-group-item d-flex justify-content-between align-items-start contato">'+
+                    '<div class="ms-2 me-auto">'+
+                        '<div class="fw-bold mb-3">Nome: ' + contato.GetNome() + '</div>'+
+                        '<p>Telefone: ' + contato.GetTelefone() + '</p>'+
+                        '<p>Email: ' + contato.GetEmail() + '</p>'+
+                        '<p>Endereço: ' + contato.GetEndereco() + '</p>'+
+                    '</div>'+
+                '</li>';
     document.getElementById(elemento).innerHTML = escrever;
 }

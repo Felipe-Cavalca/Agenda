@@ -1,3 +1,29 @@
-var contatos = [];
+$(document).ready(function(){
+    $("#cadastrarContato").on('click', function(){
 
-contatos.push(new Contato(1, "Felipe", "1298887070", "sla@gmail.com", "rua aaaa"));
+        var dados = {
+            'nome' : document.getElementById("nome").value,
+            'telefone' : document.getElementById("telefone").value,
+            'email' : document.getElementById("email").value,
+            'endereco' : document.getElementById("endereco").value,
+        }
+        dados = JSON.stringify(dados);
+
+        $.ajax({
+            url: 'http://localhost/Agenda/php/cadastroContato.php',
+            async: false,
+            data: {data:dados},
+            type: 'POST',
+            beforeSent: function () {
+                
+            },
+            success: function (resposta) {
+                alert(resposta);
+            },
+            complete: function () {
+                
+            }
+        });
+        return false;
+    });
+}); 

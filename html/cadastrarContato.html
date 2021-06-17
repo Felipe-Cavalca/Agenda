@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../framework/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../framework/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link href="../css/index.css" rel="stylesheet">
+    <script src="../framework/jquery-3.6.0.min.js"></script>
+
+    <title>Home</title>
+</head>
+
+<body>
+
+    <!--navbar-->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">Agenda</a>
+        </div>
+    </nav>
+
+    <!--cadastro-->
+    <section class="mt-1">
+        <p class="fs-1">Novo Contato</p>
+        <hr>
+        <form action="">
+            <div class="row g-3 m-4">
+                <div class="col-md-6">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input id="nome" type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input id="telefone" type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" type="email" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="endereco" class="form-label">Endereco</label>
+                    <input id="endereco" type="text" class="form-control">
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <label></label>
+                    <button id="cadastrarContato" type="button" class="btn btn-success full">Cadastrar</button>
+                </div>
+                <div class="col-md-10"></div>
+            </div>
+        </form>
+    </section>
+
+
+    <!--botoes-->
+    <a href="home.html" class="botao-flutuante-voltar">
+        <p>X</p>
+    </a>
+
+    <script src="../js/contato.js"></script>
+    <script src="../js/controlador.js"></script>
+    <script>
+    </script>
+</body>
+
+</html>
