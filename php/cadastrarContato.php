@@ -2,7 +2,7 @@
 
 $dados = json_decode($_POST['data'], true);
 $nome = $dados['nome'];
-$telfone = $dados['telefone'];
+$telefone = $dados['telefone'];
 $email = $dados['email'];
 $endereco = $dados['endereco'];
 
@@ -10,7 +10,7 @@ if ($nome != null){
     include 'conexao.php';
     $Dados = array(
         'contato_nome'     => $nome,
-        'contato_telefone' => $telfone,
+        'contato_telefone' => $telefone,
         'contato_email'    => $email,
         'contato_endereco' => $endereco,
     );

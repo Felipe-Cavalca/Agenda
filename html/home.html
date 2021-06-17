@@ -48,7 +48,7 @@
     </section>
 
     <!--botoes-->
-    <a href="cadastrarContato.html" class="botao-flutuante-cadastro">
+    <a onclick="cadastrar()" class="botao-flutuante-cadastro">
         <p>+</p>
     </a>
 
@@ -61,13 +61,19 @@
             pegarContatos("exibirContatos");
         }
 
-        function editar() {
-            alert("ainda não fiz");
+        function cadastrar(){
+            sessionStorage.setItem('contatoSelecionado', null);
+            window.location.href="dadosContato.html";
+        }
+
+        function editar(id) {
+            sessionStorage.setItem('contatoSelecionado', id);
+            window.location.href="dadosContato.html";
         }
 
         function avisoExcluir(id,nome) {
             document.getElementById("nome").innerHTML = nome;
-            sessionStorage.setItem('id', id);
+            sessionStorage.setItem('contatoSelecionado', id);
             $("#mensagemExcluir").show();
         }
 
@@ -76,7 +82,7 @@
         }
 
         function excluir(){
-            excluirContato(sessionStorage.getItem('id'), 'exibirContatos');
+            excluirContato(sessionStorage.getItem('contatoSelecionado'), 'exibirContatos');
             $("#mensagemExcluir").hide();
         }
 

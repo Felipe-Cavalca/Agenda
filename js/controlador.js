@@ -1,32 +1,65 @@
 $(document).ready(function(){
-    $("#cadastrarContato").on('click', function(){
+    $("#enviarContato").on('click', function(){
 
-        var dados = {
-            'nome' : document.getElementById("nome").value,
-            'telefone' : document.getElementById("telefone").value,
-            'email' : document.getElementById("email").value,
-            'endereco' : document.getElementById("endereco").value,
-        }
-        dados = JSON.stringify(dados);
-
-        $.ajax({
-            url: 'http://192.168.0.19/Agenda/php/cadastroContato.php',
-            async: false,
-            data: {data:dados},
-            type: 'POST',
-            beforeSent: function () {
-                
-            },
-            success: function (resposta) {
-                alert(resposta);
-            },
-            complete: function () {
-                
-            }
-        });
-        return false;
+        if(sessionStorage.getItem('contatoSelecionado') != 'null')
+                editarContato(sessionStorage.getItem('contatoSelecionado'));
+        else
+            cadastrarContato();
     });
 }); 
+
+function cadastrarContato(){
+    var dados = {
+        'nome' : document.getElementById("nome").value,
+        'telefone' : document.getElementById("telefone").value,
+        'email' : document.getElementById("email").value,
+        'endereco' : document.getElementById("endereco").value,
+    }
+    dados = JSON.stringify(dados);
+
+    $.ajax({
+        url: 'http://192.168.0.19/Agenda/php/cadastrarContato.php',
+        async: false,
+        data: {data:dados},
+        type: 'POST',
+        beforeSent: function () {
+            
+        },
+        success: function (resposta) {
+            alert(resposta);
+        },
+        complete: function () {
+            
+        }
+    });
+}
+
+function editarContato(id){
+    var dados = {
+        'id' : id,
+        'nome' : document.getElementById("nome").value,
+        'telefone' : document.getElementById("telefone").value,
+        'email' : document.getElementById("email").value,
+        'endereco' : document.getElementById("endereco").value,
+    }
+    dados = JSON.stringify(dados);
+
+    $.ajax({
+        url: 'http://192.168.0.19/Agenda/php/editarContato.php',
+        async: false,
+        data: {data:dados},
+        type: 'POST',
+        beforeSent: function () {
+            
+        },
+        success: function (resposta) {
+            alert(resposta);
+        },
+        complete: function () {
+            
+        }
+    });
+}
 
 function pegarContatos(elemento){
     var dados = {}
@@ -35,17 +68,31 @@ function pegarContatos(elemento){
     $.ajax({
         url: 'http://192.168.0.19/Agenda/php/listarContato.php',
         data: {data:dados},
+        async: false,
         type: 'POST',
         beforeSent: function () {
             
         },
         success: function (resposta) {
-            document.getElementById(elemento).innerHTML = exibir(resposta);
+            localStorage.setItem('contatos', resposta);
         },
         complete: function () {
             
         }
     });
+    document.getElementById(elemento).innerHTML = exibir(localStorage.getItem('contatos'));
+}
+
+function pegarDados(id){
+    dados = JSON.parse(localStorage.getItem('contatos'));
+    for(var i=0; i<dados.length; i++){
+        if(dados[i].id == id){
+            document.getElementById('nome').value     = dados[i].nome;
+            document.getElementById('telefone').value = dados[i].telefone;
+            document.getElementById('email').value    = dados[i].email;
+            document.getElementById('endereco').value = dados[i].endereco;
+        }
+    }
 }
 
 function excluirContato(id, elemento){

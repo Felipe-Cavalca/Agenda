@@ -13,7 +13,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<body onload="iniciaPagina()">
 
     <!--navbar-->
     <nav class="navbar navbar-dark bg-dark">
@@ -24,13 +24,13 @@
 
     <!--cadastro-->
     <section class="mt-1">
-        <p class="fs-1">Novo Contato</p>
+        <p class="fs-1">Dados do contato</p>
         <hr>
         <form action="">
             <div class="row g-3 m-4">
                 <div class="col-md-6">
                     <label for="nome" class="form-label">Nome</label>
-                    <input id="nome" type="text" class="form-control">
+                    <input id="nome" type="text" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label for="telefone" class="form-label">Telefone</label>
@@ -47,7 +47,7 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
                     <label></label>
-                    <button id="cadastrarContato" type="button" class="btn btn-success full">Cadastrar</button>
+                    <button id="enviarContato" type="button" class="btn btn-success full">Salvar</button>
                 </div>
                 <div class="col-md-10"></div>
             </div>
@@ -63,6 +63,10 @@
     <script src="../js/contato.js"></script>
     <script src="../js/controlador.js"></script>
     <script>
+        function iniciaPagina(){
+            if(sessionStorage.getItem('contatoSelecionado') != null)
+                pegarDados(sessionStorage.getItem('contatoSelecionado'));
+        }
     </script>
 </body>
 
