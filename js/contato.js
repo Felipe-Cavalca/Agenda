@@ -62,13 +62,5 @@ function Contato(id, nome, telefone, email, endereco) {
 
 function homeContatos(elemento){
     var escrever = "";
-    escrever += '<li onclick="editar()" class="list-group-item d-flex justify-content-between align-items-start contato">'+
-                    '<div class="ms-2 me-auto">'+
-                        '<div class="fw-bold mb-3">Nome: ' + contato.GetNome() + '</div>'+
-                        '<p>Telefone: ' + contato.GetTelefone() + '</p>'+
-                        '<p>Email: ' + contato.GetEmail() + '</p>'+
-                        '<p>Endereço: ' + contato.GetEndereco() + '</p>'+
-                    '</div>'+
-                '</li>';
     document.getElementById(elemento).innerHTML = escrever;
 }
