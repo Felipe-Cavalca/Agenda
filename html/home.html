@@ -35,6 +35,23 @@
         </ol>
     </section>
 
+    <!--Barra de pesquisa-->
+    <section id="cardPesquisa">
+        <div class="card">
+            <div class="card-body cardPesquisa">
+                <h5 style="color: black" class="card-title">Pesquisa de contato</h5>
+                <div class="row">
+                    <div class="col-md-8 mt-3">
+                        <input id="pesquisa" type="text" class="form-control" oninput="filtrar(this.value,'exibirContatos')">
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <p><button onclick="cancelar()"  type="button" class="btn btn-success full">Pesquisar</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!--Mensagem excluir-->
     <section id="mensagemExcluir">
         <div class="card m-5">
@@ -48,16 +65,19 @@
     </section>
 
     <!--botoes-->
-    <a onclick="cadastrar()" class="botao-flutuante-cadastro">
+    <a onclick="cadastrar()" class="botao-flutuante botao-flutuante-cadastro">
         <p>+</p>
     </a>
+    <a onclick="telaPesquisa()" class="botao-flutuante botao-flutuante-pesquisar">
+        <p>P</p>
+    </a>
 
-    <!--<script src="../js/contato.js"></script>-->
     <script src="../js/controlador.js"></script>
     <script>
 
         function iniciaPagina() {
             $("#mensagemExcluir").hide();
+            $("#cardPesquisa").hide();
             pegarContatos("exibirContatos");
         }
 
@@ -71,6 +91,10 @@
             window.location.href="dadosContato.html";
         }
 
+        function telaPesquisa(){
+            $("#cardPesquisa").show();
+        }
+
         function avisoExcluir(id,nome) {
             document.getElementById("nome").innerHTML = nome;
             sessionStorage.setItem('contatoSelecionado', id);
@@ -79,6 +103,7 @@
 
         function cancelar(){
             $("#mensagemExcluir").hide();
+            $("#cardPesquisa").hide();
         }
 
         function excluir(){

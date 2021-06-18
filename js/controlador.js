@@ -61,6 +61,31 @@ function editarContato(id){
     });
 }
 
+function filtrar(texto,elemento){ 
+    dados = JSON.parse(localStorage.getItem('contatos'));
+    var dadosFiltrados = [];
+
+    for(var i=0; i<dados.length; i++){
+        texto = texto.toUpperCase();
+        var nome = dados[i].nome.substr(0,texto.length).toUpperCase();
+        var telefone = dados[i].telefone.substr(0,texto.length).toUpperCase();
+        var email = dados[i].email.substr(0,texto.length).toUpperCase();
+        var endereco = dados[i].endereco.substr(0,texto.length).toUpperCase();
+        if( (nome == texto) || (telefone == texto) || (email == texto) || (endereco == texto)){
+            var usuario = {
+                "id":dados[i].id,
+                "nome":dados[i].nome,
+                "telefone":dados[i].telefone,
+                "email":dados[i].email,
+                "endereco":dados[i].endereco
+            }
+            dadosFiltrados.push(usuario);
+        }
+    }
+    dados = JSON.stringify(dadosFiltrados);
+    document.getElementById(elemento).innerHTML = exibir(dados);
+}
+
 function pegarContatos(elemento){
     var dados = {}
     dados = JSON.stringify(dados);
@@ -123,6 +148,7 @@ function excluirContato(id, elemento){
 
 function exibir(dados){
     val = JSON.parse(dados);
+    //console.log(dados);
     var escrever = "";
 
     for(var i=0; i<val.length; i++){
