@@ -56,13 +56,17 @@
 
 
     <!--botoes-->
-    <a href="home.html" class="botao-flutuante botao-flutuante-voltar">
+    <a onclick="voltar()" class="botao-flutuante botao-flutuante-voltar">
         <p>X</p>
     </a>
 
-    <script src="../js/contato.js"></script>
     <script src="../js/controlador.js"></script>
     <script>
+        function voltar(){
+            sessionStorage.setItem('contatoSelecionado', null);
+            window.history.back();
+        }
+
         function iniciaPagina(){
             if(sessionStorage.getItem('contatoSelecionado') != null)
                 pegarDados(sessionStorage.getItem('contatoSelecionado'));

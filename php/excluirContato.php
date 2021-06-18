@@ -8,8 +8,8 @@ if ($id != null){
     include 'conexao.php';
     $sth = $pdo->prepare("DELETE FROM tbl_contatos WHERE contato_id = :id");
     $sth->bindValue(':id', $id);
-    $sth->execute();
-    
-    if($listar == true)
-        include 'listarContato.php';
+    if($sth->execute()){
+        if($listar == true)
+            include 'listarContato.php';
+    }
 }

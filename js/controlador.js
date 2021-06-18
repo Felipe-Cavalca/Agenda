@@ -26,7 +26,11 @@ function cadastrarContato(){
             
         },
         success: function (resposta) {
-            alert(resposta);
+            if (resposta % 1 === 0){
+                sessionStorage.setItem('contatoSelecionado', resposta);
+                window.history.back();
+            }else  
+                alert('houve um erro');
         },
         complete: function () {
             
@@ -100,12 +104,12 @@ function pegarContatos(elemento){
         },
         success: function (resposta) {
             localStorage.setItem('contatos', resposta);
+            document.getElementById(elemento).innerHTML = exibir(localStorage.getItem('contatos'));
         },
         complete: function () {
             
         }
     });
-    document.getElementById(elemento).innerHTML = exibir(localStorage.getItem('contatos'));
 }
 
 function pegarDados(id){
@@ -130,12 +134,14 @@ function excluirContato(id, elemento){
 
     $.ajax({
         url: 'http://192.168.0.19/Agenda/php/excluirContato.php',
+        async: false,
         data: {data:dados},
         type: 'POST',
         beforeSent: function () {
             
         },
         success: function (resposta) {
+            localStorage.setItem('contatos', resposta);
             if (elemento != undefined){
                 document.getElementById(elemento).innerHTML = exibir(resposta);
             }
