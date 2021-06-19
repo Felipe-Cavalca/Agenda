@@ -1,8 +1,8 @@
 $(document).ready(function(){
     $("#enviarContato").on('click', function(){
 
-        if(sessionStorage.getItem('contatoSelecionado') != 'null')
-                editarContato(sessionStorage.getItem('contatoSelecionado'));
+        if(sessionStorage.getItem('contatoSelecionado') != undefined && sessionStorage.getItem('contatoSelecionado') != 'undefined')
+            editarContato(sessionStorage.getItem('contatoSelecionado'));
         else
             cadastrarContato();
     });
@@ -27,7 +27,7 @@ function cadastrarContato(){
         },
         success: function (resposta) {
             if (resposta % 1 === 0){
-                sessionStorage.setItem('contatoSelecionado', resposta);
+                sessionStorage.setItem('mensagem', 'cadastro');
                 window.history.back();
             }else  
                 alert('houve um erro');
@@ -57,7 +57,11 @@ function editarContato(id){
             
         },
         success: function (resposta) {
-            alert(resposta);
+            if (resposta == 'true'){
+                sessionStorage.setItem('mensagem', 'edicao');
+                window.history.back();
+            }else  
+                alert('houve um erro');
         },
         complete: function () {
             
@@ -96,8 +100,8 @@ function pegarContatos(elemento){
 
     $.ajax({
         url: 'http://192.168.0.19/Agenda/php/listarContato.php',
-        data: {data:dados},
         async: false,
+        data: {data:dados},
         type: 'POST',
         beforeSent: function () {
             
@@ -150,6 +154,7 @@ function excluirContato(id, elemento){
             
         }
     });
+    return true;
 }
 
 function exibir(dados){

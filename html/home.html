@@ -45,7 +45,8 @@
                         <input id="pesquisa" type="text" class="form-control" oninput="filtrar(this.value,'exibirContatos')">
                     </div>
                     <div class="col-md-4 mt-3">
-                        <p><button onclick="cancelar()"  type="button" class="btn btn-success full">Pesquisar</button></p>
+                        <p><button onclick="cancelar()" type="button" class="btn btn-success full">Pesquisar</button>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -57,12 +58,23 @@
         <div class="card m-5">
             <div class="card-body mensagemExcluir">
                 <h5 style="color: black" class="card-title">Exclusão de contato!</h5>
-                <p  style="color: black" class="card-text">Essa ação irá excluir permanentemente <a id="nome"></a> de sua agenda, tem certeza que deseja continuar?</p>
+                <p style="color: black" class="card-text">Essa ação irá excluir permanentemente <a id="nome"></a> de sua
+                    agenda, tem certeza que deseja continuar?</p>
                 <p><button onclick="cancelar()" type="button" class="btn btn-primary full">Cancelar</button></p>
                 <p><button onclick="excluir()" type="button" class="btn btn-danger  full">Excluir</button></p>
             </div>
         </div>
     </section>
+
+    <!--mensagens-->
+    <div id="sucesso" class="toast mensagem-sucesso" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header mensagem-sucesso-titulo">
+            <strong class="mr-auto">Sucesso</strong>
+        </div>
+        <div class="toast-body mensagem-sucesso-texto">
+            <p id="mensagemSucesso"></p>
+        </div>
+    </div>
 
     <!--botoes-->
     <a onclick="cadastrar()" class="botao-flutuante botao-flutuante-cadastro">
@@ -74,42 +86,64 @@
 
     <script src="../js/controlador.js"></script>
     <script>
+        //setTimeout(function (){$("#cardPesquisa").hide();}, 5000);
 
         function iniciaPagina() {
             $("#mensagemExcluir").hide();
             $("#cardPesquisa").hide();
+
             pegarContatos("exibirContatos");
+
+            filtrar(document.getElementById("pesquisa").value,'exibirContatos');
+
+            if (sessionStorage.getItem('mensagem') == "cadastro") {
+                sessionStorage.setItem('mensagem', undefined);
+                document.getElementById("mensagemSucesso").innerHTML = "Usuario cadastrado com sucesso!";
+                $('#sucesso').toast('show');
+            }
+
+            if (sessionStorage.getItem('mensagem') == "edicao") {
+                sessionStorage.setItem('mensagem', undefined);
+                document.getElementById("mensagemSucesso").innerHTML = "Usuario Editado com sucesso!";
+                $('#sucesso').toast('show');
+            }
         }
 
         function cadastrar(){
-            sessionStorage.setItem('contatoSelecionado', null);
+            sessionStorage.setItem('contatoSelecionado', undefined);
             window.location.href="dadosContato.html";
         }
 
         function editar(id) {
             sessionStorage.setItem('contatoSelecionado', id);
-            window.location.href="dadosContato.html";
+            window.location.href = "dadosContato.html";
         }
 
-        function telaPesquisa(){
+        function telaPesquisa() {
             $("#cardPesquisa").show();
             document.getElementById("pesquisa").focus();
         }
 
-        function avisoExcluir(id,nome) {
+        function avisoExcluir(id, nome) {
             document.getElementById("nome").innerHTML = nome;
             sessionStorage.setItem('contatoSelecionado', id);
             $("#mensagemExcluir").show();
         }
-
-        function cancelar(){
+        
+        function cancelar() {
             $("#mensagemExcluir").hide();
             $("#cardPesquisa").hide();
         }
 
-        function excluir(){
-            excluirContato(sessionStorage.getItem('contatoSelecionado'), 'exibirContatos');
+        function excluir() {
             $("#mensagemExcluir").hide();
+
+            if (excluirContato(sessionStorage.getItem('contatoSelecionado'), 'exibirContatos')) {
+                document.getElementById("mensagemSucesso").innerHTML = "Usuario excluido com sucesso!";
+                $('#sucesso').toast('show');
+            }
+
+            filtrar(document.getElementById("pesquisa").value,'exibirContatos');
         }
 
     </script>

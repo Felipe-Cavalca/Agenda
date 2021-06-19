@@ -22,7 +22,7 @@
         </div>
     </nav>
 
-    <!--cadastro-->
+    <!--form-->
     <section class="mt-1">
         <p class="fs-1">Dados do contato</p>
         <hr>
@@ -54,22 +54,20 @@
         </form>
     </section>
 
-
     <!--botoes-->
     <a onclick="voltar()" class="botao-flutuante botao-flutuante-voltar">
-        <p>X</p>
+        <span aria-hidden="true">&times;</span>
     </a>
 
     <script src="../js/controlador.js"></script>
     <script>
-        function voltar(){
-            sessionStorage.setItem('contatoSelecionado', null);
-            window.history.back();
-        }
-
         function iniciaPagina(){
             if(sessionStorage.getItem('contatoSelecionado') != null)
                 pegarDados(sessionStorage.getItem('contatoSelecionado'));
+        }
+        
+        function voltar(){
+            window.history.back();
         }
     </script>
 </body>

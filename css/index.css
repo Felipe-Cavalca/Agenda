@@ -37,6 +37,15 @@ hr{
     background-color: whitesmoke;
 }
 
+.mensagem-sucesso{
+    position: fixed;
+    bottom:1%;
+    left:1%;
+    width: 65%;
+    color:black;
+    background-color: white;
+}
+
 .botao-flutuante{
     position: fixed;
     bottom:10px;
