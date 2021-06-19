@@ -42,7 +42,8 @@
                 <h5 style="color: black" class="card-title">Pesquisa de contato</h5>
                 <div class="row">
                     <div class="col-md-8 mt-3">
-                        <input id="pesquisa" type="text" class="form-control" oninput="filtrar(this.value,'exibirContatos')">
+                        <input id="pesquisa" type="text" class="form-control"
+                            oninput="filtrar(this.value,'exibirContatos')">
                     </div>
                     <div class="col-md-4 mt-3">
                         <p><button onclick="cancelar()" type="button" class="btn btn-success full">Pesquisar</button>
@@ -93,7 +94,7 @@
 
             pegarContatos("exibirContatos");
 
-            filtrar(document.getElementById("pesquisa").value,'exibirContatos');
+            filtrar(document.getElementById("pesquisa").value, 'exibirContatos');
 
             if (sessionStorage.getItem('mensagem') == "cadastro") {
                 sessionStorage.setItem('mensagem', undefined);
@@ -108,9 +109,9 @@
             }
         }
 
-        function cadastrar(){
+        function cadastrar() {
             sessionStorage.setItem('contatoSelecionado', undefined);
-            window.location.href="dadosContato.html";
+            window.location.href = "dadosContato.html";
         }
 
         function editar(id) {
@@ -127,15 +128,14 @@
             sessionStorage.setItem("idIntervalo", idIntervalo);
         }
 
-        function escondePesquisa(){
+        function escondePesquisa() {
             var restante = sessionStorage.getItem("tempoPesquisa");
             var idIntervalo = sessionStorage.getItem("idIntervalo");
-            console.log(restante);
-            if (restante == 0){
+            if (restante == 0) {
                 $("#cardPesquisa").hide();
-                clearInterval (idIntervalo);
-            }else if(restante >0)
-                sessionStorage.setItem("tempoPesquisa", restante-1);
+                clearInterval(idIntervalo);
+            } else if (restante > 0)
+                sessionStorage.setItem("tempoPesquisa", restante - 1);
         }
 
         function avisoExcluir(id, nome) {
@@ -143,7 +143,7 @@
             sessionStorage.setItem('contatoSelecionado', id);
             $("#mensagemExcluir").show();
         }
-        
+
         function cancelar() {
             $("#mensagemExcluir").hide();
             $("#cardPesquisa").hide();
@@ -157,7 +157,7 @@
                 $('#sucesso').toast('show');
             }
 
-            filtrar(document.getElementById("pesquisa").value,'exibirContatos');
+            filtrar(document.getElementById("pesquisa").value, 'exibirContatos');
         }
 
     </script>

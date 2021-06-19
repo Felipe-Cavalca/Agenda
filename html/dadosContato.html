@@ -61,12 +61,12 @@
 
     <script src="../js/controlador.js"></script>
     <script>
-        function iniciaPagina(){
-            if(sessionStorage.getItem('contatoSelecionado') != null)
+        function iniciaPagina() {
+            if (sessionStorage.getItem('contatoSelecionado') != null)
                 pegarDados(sessionStorage.getItem('contatoSelecionado'));
         }
-        
-        function voltar(){
+
+        function voltar() {
             window.history.back();
         }
     </script>
