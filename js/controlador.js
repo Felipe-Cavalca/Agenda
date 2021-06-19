@@ -6,7 +6,8 @@ function pegarVariaveis(){
         url: '../dados.txt',
         async: false,
         success: function (dados) {
-            dados = dados.split(' ');
+            dados = dados.split(',');
+            dados = dados[0].split(' ');
             ip = dados[1];
         },error: function(){
             alert("arquivo de dados não encontrado");

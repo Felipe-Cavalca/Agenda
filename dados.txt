@@ -1,1 +1,5 @@
-ip: http://192.168.0.19/Agenda/
+ip http://192.168.0.19/Agenda/,
+hostBanco localhost,
+nomeBanco bd_agenda,
+usuarioBanco root,
+senhaBanco ,
