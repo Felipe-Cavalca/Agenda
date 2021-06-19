@@ -70,6 +70,7 @@ function editarContato(id){
 }
 
 function filtrar(texto,elemento){ 
+    sessionStorage.setItem("tempoPesquisa", 5);
     dados = JSON.parse(localStorage.getItem('contatos'));
     var dadosFiltrados = [];
 

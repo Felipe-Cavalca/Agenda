@@ -86,7 +86,6 @@
 
     <script src="../js/controlador.js"></script>
     <script>
-        //setTimeout(function (){$("#cardPesquisa").hide();}, 5000);
 
         function iniciaPagina() {
             $("#mensagemExcluir").hide();
@@ -122,6 +121,21 @@
         function telaPesquisa() {
             $("#cardPesquisa").show();
             document.getElementById("pesquisa").focus();
+
+            sessionStorage.setItem("tempoPesquisa", 5);
+            var idIntervalo = setInterval(escondePesquisa, 1000);
+            sessionStorage.setItem("idIntervalo", idIntervalo);
+        }
+
+        function escondePesquisa(){
+            var restante = sessionStorage.getItem("tempoPesquisa");
+            var idIntervalo = sessionStorage.getItem("idIntervalo");
+            console.log(restante);
+            if (restante == 0){
+                $("#cardPesquisa").hide();
+                clearInterval (idIntervalo);
+            }else if(restante >0)
+                sessionStorage.setItem("tempoPesquisa", restante-1);
         }
 
         function avisoExcluir(id, nome) {
