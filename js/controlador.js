@@ -1,3 +1,19 @@
+var ip;
+pegarVariaveis();
+
+function pegarVariaveis(){
+    $.ajax({
+        url: '../dados.txt',
+        async: false,
+        success: function (dados) {
+            dados = dados.split(' ');
+            ip = dados[1];
+        },error: function(){
+            alert("arquivo de dados não encontrado");
+        },
+    });
+}
+
 $(document).ready(function () {
     $("#enviarContato").on('click', function () {
 
@@ -18,7 +34,7 @@ function cadastrarContato() {
     dados = JSON.stringify(dados);
 
     $.ajax({
-        url: 'http://192.168.0.19/Agenda/php/cadastrarContato.php',
+        url: ip + 'php/cadastrarContato.php',
         async: false,
         data: { data: dados },
         type: 'POST',
@@ -49,7 +65,7 @@ function editarContato(id) {
     dados = JSON.stringify(dados);
 
     $.ajax({
-        url: 'http://192.168.0.19/Agenda/php/editarContato.php',
+        url: ip+ 'php/editarContato.php',
         async: false,
         data: { data: dados },
         type: 'POST',
@@ -100,7 +116,7 @@ function pegarContatos(elemento) {
     dados = JSON.stringify(dados);
 
     $.ajax({
-        url: 'http://192.168.0.19/Agenda/php/listarContato.php',
+        url: ip + 'php/listarContato.php',
         async: false,
         data: { data: dados },
         type: 'POST',
@@ -138,7 +154,7 @@ function excluirContato(id, elemento) {
     dados = JSON.stringify(dados);
 
     $.ajax({
-        url: 'http://192.168.0.19/Agenda/php/excluirContato.php',
+        url: ip + 'php/excluirContato.php',
         async: false,
         data: { data: dados },
         type: 'POST',
