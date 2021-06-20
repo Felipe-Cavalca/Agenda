@@ -7,8 +7,8 @@
 
     $host = explode(" ",$dados[1]);
     $host = $host[1];
-    $nome = explode(" ",$dados[2]);
-    $nome = $nome[1];
+    $nomeBD = explode(" ",$dados[2]);
+    $nomeBD = $nomeBD[1];
     $usuario = explode(" ",$dados[3]);
     $usuario = $usuario[1];
     $senha = explode(" ",$dados[4]);
@@ -18,7 +18,7 @@
 
     //conexao com banco de dados
     try {
-        $pdo = new PDO("mysql:host=".$host.";dbname=".$nome, $usuario, $senha); 
+        $pdo = new PDO("mysql:host=".$host.";dbname=".$nomeBD, $usuario, $senha); 
     } catch (Exception $e) {
         $e->getMessage();
         echo "Não foi possivel se conectar" . $e;
