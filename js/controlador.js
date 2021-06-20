@@ -39,9 +39,6 @@ function cadastrarContato() {
         async: false,
         data: { data: dados },
         type: 'POST',
-        beforeSent: function () {
-
-        },
         success: function (resposta) {
             if (resposta % 1 === 0) {
                 sessionStorage.setItem('mensagem', 'cadastro');
@@ -49,9 +46,6 @@ function cadastrarContato() {
             } else
                 alert('houve um erro');
         },
-        complete: function () {
-
-        }
     });
 }
 
@@ -70,9 +64,6 @@ function editarContato(id) {
         async: false,
         data: { data: dados },
         type: 'POST',
-        beforeSent: function () {
-
-        },
         success: function (resposta) {
             if (resposta == 'true') {
                 sessionStorage.setItem('mensagem', 'edicao');
@@ -80,9 +71,6 @@ function editarContato(id) {
             } else
                 alert('houve um erro');
         },
-        complete: function () {
-
-        }
     });
 }
 
@@ -121,16 +109,10 @@ function pegarContatos(elemento) {
         async: false,
         data: { data: dados },
         type: 'POST',
-        beforeSent: function () {
-
-        },
         success: function (resposta) {
             localStorage.setItem('contatos', resposta);
             document.getElementById(elemento).innerHTML = exibir(localStorage.getItem('contatos'));
         },
-        complete: function () {
-
-        }
     });
 }
 
@@ -159,18 +141,12 @@ function excluirContato(id, elemento) {
         async: false,
         data: { data: dados },
         type: 'POST',
-        beforeSent: function () {
-
-        },
         success: function (resposta) {
             localStorage.setItem('contatos', resposta);
             if (elemento != undefined) {
                 document.getElementById(elemento).innerHTML = exibir(resposta);
             }
         },
-        complete: function () {
-
-        }
     });
     return true;
 }
